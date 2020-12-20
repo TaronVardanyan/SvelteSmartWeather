@@ -4,6 +4,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import {config} from 'dotenv';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -42,6 +44,16 @@ export default {
 				// enable run-time checks when not in production
 				dev: !production
 			}
+		}),
+		replace({   FOO: 'bar',
+			process: JSON.stringify({
+				env: {
+					isProd: production,
+					API_URL: "http://api.weatherstack.com/",
+					API_KEY: "edc95e217d304d9426ee3ddaad5e4ad4",
+					...config().parsed
+				}
+			}),
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
