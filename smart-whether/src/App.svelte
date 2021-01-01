@@ -1,11 +1,20 @@
 <script>
-    import Card from './components/Card.svelte';
+    import CardContainer from './components/CardContainer.svelte';
+    import Header from "./components/Header.svelte";
+    import Footer from "./components/Footer.svelte";
 </script>
 
-<main>
-    <Card/>
+<main class="app">
+    <Header/>
+    <CardContainer/>
+    <Footer/>
 </main>
 
-<style>
-
+<style type="text/scss">
+  .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 </style>
