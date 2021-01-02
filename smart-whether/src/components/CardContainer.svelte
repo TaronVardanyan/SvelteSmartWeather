@@ -32,6 +32,6 @@
         align-items: center;
         width: 100%;
         flex: 1;
-        background: lightpink;
+        background: linear-gradient(135deg,#1f4e69 0,#164058 100%);;
     }
 </style>
