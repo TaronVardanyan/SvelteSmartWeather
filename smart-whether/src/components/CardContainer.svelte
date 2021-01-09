@@ -2,9 +2,12 @@
     import {onMount} from 'svelte';
     import {weatherData} from "../writableStore";
     import MainCard from "./MainCard.svelte";
+    import {fly} from 'svelte/transition';
+    import { DoubleBounce } from 'svelte-loading-spinners'
 
     const apiURL = process.env.API_URL;
     const key = process.env.API_KEY;
+    let isLoading = false;
 
     onMount(async () => {
         let response = await fetch(`${apiURL}current?access_key=${key}&query=Yerevan`);
@@ -13,25 +16,48 @@
             weatherData.set(json);
         }
     });
+
+    async function updateCardData() {
+        isLoading = true;
+        let response = await fetch(`${apiURL}current?access_key=${key}&query=Yerevan`);
+        if (response.ok) {
+            let json = await response.json();
+            weatherData.set(json);
+            setTimeout(() => {
+                isLoading = false;
+            }, 3000);
+        }
+    }
 </script>
 
 <main class="main_card_container">
-    {#if $weatherData}
+    {#if ($weatherData && !isLoading)}
         <MainCard
                 data={$weatherData}
+                on:message={updateCardData}
         />
     {:else}
-        <div>Loading...</div>
+        <div
+                in:fly="{{delay: 500}}"
+                class="loading"
+        >
+            <DoubleBounce size="60" color="#FF3E00" unit="px"/>
+        </div>
     {/if}
 </main>
 
-<style>
-    .main_card_container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        flex: 1;
-        background: linear-gradient(135deg,#1f4e69 0,#164058 100%);;
+<style type="text/scss">
+  .main_card_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    background: linear-gradient(135deg, #1f4e69 0, #164058 100%);
+    position: relative;
+
+    .loading {
+      position: absolute;
     }
+  }
 </style>

@@ -15,6 +15,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
+    box-shadow: 0 0 10px red;
     h3{
       color: white;
     }

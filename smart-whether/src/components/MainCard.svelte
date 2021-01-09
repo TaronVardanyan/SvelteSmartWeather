@@ -1,15 +1,19 @@
 <script>
     export let data;
-    import {fade} from 'svelte/transition';
+    import {fade, fly} from 'svelte/transition';
+    import {createEventDispatcher} from "svelte";
+
+    const updateData = createEventDispatcher();
 
     function handleUpdate() {
-        console.log("update");
+        updateData('message');
     }
 </script>
 
 <div
         class="card"
-        transition:fade
+        in:fade
+        out:fade
 >
     <div class="location">
         {#if data.current.is_day === "yes"}
@@ -47,7 +51,7 @@
     border: 4px solid #608094;
     background: #16394c;
     color: white;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 
     .location {
       display: flex;
