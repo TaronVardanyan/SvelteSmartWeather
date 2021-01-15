@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
+  heroku: circleci/heroku@1.2.4
 jobs:
   build:
     executor: heroku/default
@@ -9,13 +9,10 @@ jobs:
       - heroku/install
       - heroku/deploy-via-git
 
-  clean:
-    steps:
-      - run:
-          name: Clean Database
-          command: "curl https://svelte-smart-weather.herokuapp.com/logs/clean"
-
 workflows:
   deploy:
     jobs:
       - build
+  node-tests:
+    jobs:
+      - node/test
