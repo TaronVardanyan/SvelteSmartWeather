@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  heroku: circleci/heroku@0.0.10
+  node: circleci/node@3.0.0
 jobs:
   build:
     executor: heroku/default
@@ -10,8 +10,6 @@ jobs:
       - heroku/deploy-via-git
 
   clean:
-    docker:
-      - image: circleci/node:10.16.3
     steps:
       - run:
           name: Clean Database
@@ -21,13 +19,3 @@ workflows:
   deploy:
     jobs:
       - build
-  clean_old_logs:
-    triggers:
-      - schedule:
-          cron: "* * * * *" # use cron syntax to set the schedule
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - clean
