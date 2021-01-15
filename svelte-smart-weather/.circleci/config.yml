@@ -15,7 +15,7 @@ jobs:
     steps:
       - run:
           name: Clean Database
-          command: "curl https://[YOUR_HEROKU_APP_NAME].herokuapp.com/logs/clean"
+          command: "curl https://svelte-smart-weather.herokuapp.com/logs/clean"
 
 workflows:
   deploy:
