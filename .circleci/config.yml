@@ -1,33 +1,7 @@
 version: 2.1
 orbs:
   heroku: circleci/heroku@0.0.10
-jobs:
-  build:
-    executor: heroku/default
-    steps:
-      - checkout
-      - heroku/install
-      - heroku/deploy-via-git
-
-  clean:
-    docker:
-      - image: circleci/node:10.16.3
-    steps:
-      - run:
-          name: Clean Database
-          command: "curl https://svelte-smart-weather.herokuapp.com/logs/clean"
-
 workflows:
-  deploy:
+  heroku_deploy:
     jobs:
-      - build
-  clean_old_logs:
-    triggers:
-      - schedule:
-          cron: "* * * * *" # use cron syntax to set the schedule
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - clean
+      - heroku/deploy-via-git
