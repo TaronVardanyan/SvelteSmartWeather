@@ -1,13 +1,33 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Use a package of configuration called an orb.
 orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
+  heroku: circleci/heroku@0.0.10
+jobs:
+  build:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
+
+  clean:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - run:
+          name: Clean Database
+          command: "curl https://[YOUR_HEROKU_APP_NAME].herokuapp.com/logs/clean"
+
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  deploy:
     jobs:
-      - welcome/run
+      - build
+  clean_old_logs:
+    triggers:
+      - schedule:
+          cron: "* * * * *" # use cron syntax to set the schedule
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - clean
