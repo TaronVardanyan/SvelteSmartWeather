@@ -7,8 +7,8 @@
 
 <main class="app">
     <Header/>
-    <!--    <CardContainer/>-->
-    <WeatherForecast/>
+    <CardContainer/>
+    <!--    <WeatherForecast/>-->
     <Footer/>
 </main>
 
