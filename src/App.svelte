@@ -3,6 +3,12 @@
     import WeatherForecast from './components/WeatherForecasr.svelte';
     import Header from "./components/Header.svelte";
     import Footer from "./components/Footer.svelte";
+
+    let pathString = window.location.href;
+    console.log(window.location.href.replace("https", "http"))
+    if(pathString.split(":")[0] === "https"){
+        window.location.push(window.location.href.replace("https", "http"));
+    }
 </script>
 
 <main class="app">
