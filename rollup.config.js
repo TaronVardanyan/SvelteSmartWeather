@@ -51,9 +51,9 @@ export default {
 			process: JSON.stringify({
 				env: {
 					isProd: production,
-					API_URL: "https://api.weatherstack.com/",
+					API_URL: "http://api.weatherstack.com/",
 					API_KEY: "edc95e217d304d9426ee3ddaad5e4ad4",
-					API_FORECAST_URL: "https://api.openweathermap.org/data/2.5/forecast",
+					API_FORECAST_URL: "http://api.openweathermap.org/data/2.5/forecast",
 					API_FORECAST_KEY: "01f60c6cf9c2c4ec375eff8ab5bb8300",
 					...config().parsed
 				}
