@@ -7,7 +7,7 @@
     let pathString = window.location.href;
     console.log(window.location.href.replace("https", "http"))
     if(pathString.split(":")[0] === "https"){
-        window.location.push(window.location.href.replace("https", "http"));
+        window.location.assign(window.location.href.replace("https", "http"));
     }
 </script>
 
