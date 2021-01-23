@@ -48,12 +48,12 @@
 
 <style type="text/scss">
   .main_card_container {
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     flex: 1;
-    background: linear-gradient(135deg, #1f4e69 0, #164058 100%);
     position: relative;
 
     .loading {

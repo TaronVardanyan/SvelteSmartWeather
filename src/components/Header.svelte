@@ -1,10 +1,16 @@
 <script>
-
+    import {link} from "svelte-routing";
 </script>
 
 <header>
     <h3>Smart Weather</h3>
-    <img src="images/svelte-icon.svg" alt="svelte-icon">
+    <div class="navigation_sect">
+        <nav>
+            <a href="/" use:link>Home</a>
+            <a href="forecast" use:link>Forecast weather for 3 days</a>
+        </nav>
+        <img src="images/svelte-icon.svg" alt="svelte-icon">
+    </div>
 </header>
 
 <style type="text/scss">
@@ -17,13 +23,35 @@
     justify-content: space-between;
     z-index: 1;
     box-shadow: 0 0 10px red;
-    h3{
+
+    h3 {
       color: white;
       margin-left: 3vw;
     }
-    img{
+
+    img {
       width: 3vw;
-      margin-right: 3vw;
+      margin: 3vw;
+    }
+
+    .navigation_sect {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      nav {
+        a {
+          color: white;
+          font-weight: bold;
+          text-decoration: none;
+          white-space: nowrap;
+          cursor: pointer;
+
+          &:first-child {
+            margin-right: 2vw;
+          }
+        }
+      }
     }
   }
 </style>
