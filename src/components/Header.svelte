@@ -36,11 +36,19 @@
       @media (min-width: 481px) and (max-width: 767px) {
         font-size: 3.2vw;
       }
+
+      @media (min-width: 320px) and (max-width: 480px) {
+        font-size: 3.5vw;
+      }
     }
 
     img {
       width: 3vw;
       margin: 3vw;
+
+      @media (min-width: 320px) and (max-width: 480px) {
+        width: 4.5vw;
+      }
     }
 
     .navigation_sect {
@@ -63,6 +71,10 @@
 
           @media (min-width: 481px) and (max-width: 767px) {
             font-size: 3.2vw;
+          }
+
+          @media (min-width: 320px) and (max-width: 480px) {
+            font-size: 3vw;
           }
 
           &:first-child {
