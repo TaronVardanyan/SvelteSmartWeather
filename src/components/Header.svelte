@@ -27,6 +27,15 @@
     h3 {
       color: white;
       margin-left: 3vw;
+      white-space: nowrap;
+      font-size: 1.4vw;
+      @media (min-width: 768px) and (max-width: 1024px) {
+        font-size: 2.2vw;
+      }
+
+      @media (min-width: 481px) and (max-width: 767px) {
+        font-size: 3.2vw;
+      }
     }
 
     img {
@@ -46,6 +55,15 @@
           text-decoration: none;
           white-space: nowrap;
           cursor: pointer;
+          font-size: 1.4vw;
+
+          @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 2.2vw;
+          }
+
+          @media (min-width: 481px) and (max-width: 767px) {
+            font-size: 3.2vw;
+          }
 
           &:first-child {
             margin-right: 2vw;

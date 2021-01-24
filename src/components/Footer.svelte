@@ -17,8 +17,17 @@
     justify-content: center;
     z-index: 1;
     box-shadow: 0 0 10px red;
-    h3{
+
+    h3 {
       color: white;
+      font-size: 1.5vw;
+      @media (min-width: 768px) and (max-width: 1024px) {
+        font-size: 2vw;
+      }
+
+      @media (min-width: 481px) and (max-width: 767px) {
+        font-size: 3.2vw;
+      }
     }
   }
 </style>
