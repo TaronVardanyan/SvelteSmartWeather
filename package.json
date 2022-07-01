@@ -1,5 +1,5 @@
 {
-  "name": "svelte-smart-weather",
+  "name": "SvelteSmartWeather",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
